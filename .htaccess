@@ -1,0 +1,50 @@
+DirectoryIndex index.php
+RewriteEngine On
+
+# Основной домен
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+ RewriteEngine On
+ RewriteCond %{HTTPS} !=on
+ RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+
+
+
+
+# Основные страницы
+RewriteRule ^recovery(/?)+$ index.php?menu=recovery [L]
+RewriteRule ^index.html$ index.php [L]
+RewriteRule ^stat(/?)+$ index.php?menu=stat [L]
+RewriteRule ^rules(/?)+$ index.php?menu=rules [L]
+RewriteRule ^help(/?)+$ index.php?menu=help [L]
+RewriteRule ^news(/?)+$ index.php?menu=news [L]
+RewriteRule ^about(/?)+$ index.php?menu=about [L]
+RewriteRule ^help(/?)+$ index.php?menu=help [L]
+RewriteRule ^success(/?)+$ index.php?menu=success [L]
+RewriteRule ^fail(/?)+$ index.php?menu=fail [L]
+RewriteRule ^contacts(/?)+$ index.php?menu=contacts [L]
+
+# Аккаунт
+RewriteRule ^config(/?)+$ index.php?menu=account&sel=config [L]
+RewriteRule ^serf(/?)+$ index.php?menu=account&sel=serf [L]
+RewriteRule ^history(/?)+$ index.php?menu=account&sel=history [L]
+RewriteRule ^serf(/?)+$ index.php?menu=account&sel=serf[L]
+RewriteRule ^serfadd(/?)+$ index.php?menu=account&sel=serfadd [L]
+RewriteRule ^serfrefill(/?)+$ index.php?menu=account&sel=serfrefill [L]
+RewriteRule ^serfingview/([0-9]+)(/?)+$ _serfing_view.php?view=$1 [L]
+RewriteRule ^bonus(/?)+$ index.php?menu=account&sel=bonus [L]
+RewriteRule ^bonus60(/?)+$ index.php?menu=account&sel=bonus60 [L]
+RewriteRule ^refill(/?)+$ index.php?menu=account&sel=refill [L]
+RewriteRule ^balanceout_/([0-9]+)(/?)+$ index.php?menu=account&sel=balanceout&pay_id=$1 [L]
+RewriteRule ^balanceout(/?)+$ index.php?menu=account&sel=balanceout [L]
+RewriteRule ^withdraw_([0-9]+)(/?)+$ index.php?menu=account&sel=withdraw&pay_id=$1 [L]
+RewriteRule ^withdraw(/?)+$ index.php?menu=account&sel=withdraw [L]
+RewriteRule ^exchange(/?)+$ index.php?menu=account&sel=exchange [L]
+RewriteRule ^farm(/?)+$ index.php?menu=account&sel=farm [L]
+RewriteRule ^referrals(/?)+$ index.php?menu=account&sel=referrals [L]
+RewriteRule ^output(/?)+$ index.php?menu=account&sel=output [L]
+RewriteRule ^profile(/?)+$ index.php?menu=account [L]
+
+php_value default_charset cp1251
+AddType 'text/html; charset=cp1251' .html .htm .shtml
